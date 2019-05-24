@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">BnB Movies</string>
+    <string name="email">Email</string>
+    <string name="pass">Password</string>
+    <string name="loginbtn">Login</string>
+    <string name="regbtn">Register</string>
+    <string name="title">BnB Movies</string>
+</resources>
