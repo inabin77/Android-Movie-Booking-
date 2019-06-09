@@ -12,7 +12,7 @@
         android:layout_height="130dp"
         android:layout_marginTop="6dp"
         android:layout_gravity="center"
-        android:background="@drawable/ic_launcher_background"/>
+        android:background="@drawable/bnb_icon"/>
 
     <ScrollView
         android:layout_width="match_parent"
