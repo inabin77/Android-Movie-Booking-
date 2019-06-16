@@ -10,9 +10,9 @@
             android:supportsRtl="true"
             android:usesCleartextTraffic="true"
             android:theme="@style/AppTheme">
-            <activity android:name=".DashboardActivity"></activity>
-            <activity android:name=".RegisterActivity" />
-            <activity android:name=".LoginActivity">
+            <activity android:name=".ui.main.DashboardActivity"></activity>
+            <activity android:name=".ui.main.RegisterActivity" />
+            <activity android:name=".ui.main.LoginActivity">
                 <intent-filter>
                     <action android:name="android.intent.action.MAIN" />
 
