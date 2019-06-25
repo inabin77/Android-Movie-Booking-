@@ -13,12 +13,12 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
-    <string name="menu_send">Send</string>
+    <string name="menu_Movies">Movies</string>
+    <string name="menu_Cinemas">Cinemas</string>
+    <string name="menu_My_Tickets">My Tickets</string>
+    <string name="menu_Contact">Contact</string>
+    <string name="menu_Settings">Settings</string>
+    <string name="menu_Logout">Logout</string>
     <string name="title_activity_dashboard">BnB</string>
 </resources>
 

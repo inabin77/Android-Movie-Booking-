@@ -70,7 +70,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     .build();
             UserInterface userInterface = retrofit.create(UserInterface.class);
             final User user = new User(name.getText().toString().trim(), email.getText().toString().trim(), password.getText().toString().trim(), password2.getText().toString().trim());
-            Call<ResponseBody> call = userInterface.userRegistration(user);
+            Call<ResponseBody> call = userInterface.userSignup(user);
 
             call.enqueue(new Callback<ResponseBody>() {
                 @Override
@@ -79,7 +79,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     Log.d("VAL", "success ");
 
                     if(response.isSuccessful()) {
-                        Toast.makeText(getApplicationContext(), "REGISTRATION SUCCESSFUL", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "SIGNUP SUCCESSFUL", Toast.LENGTH_SHORT).show();
 
                         Log.d("VAL", "success response ");
 
