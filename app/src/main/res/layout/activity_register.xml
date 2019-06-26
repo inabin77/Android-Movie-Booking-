@@ -20,7 +20,7 @@
         android:background="@drawable/shapeemail"
         android:drawableLeft="@drawable/ic_person_black_24dp"
         android:drawablePadding="10dp"
-        android:hint="Full Name"
+        android:hint="Name"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textColorHighlight="@color/white"/>
@@ -54,7 +54,7 @@
         android:textColorHighlight="@color/white"/>
 
     <EditText
-        android:id="@+id/regconfirmpassword"
+        android:id="@+id/phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -62,7 +62,35 @@
         android:background="@drawable/shapeemail"
         android:drawableLeft="@drawable/ic_check_black_24dp"
         android:drawablePadding="10dp"
-        android:hint="Confirm Password"
+        android:hint="Phone"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textColorHighlight="@color/white"/>
+
+    <EditText
+        android:id="@+id/dob"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/shapeemail"
+        android:drawableLeft="@drawable/ic_check_black_24dp"
+        android:drawablePadding="10dp"
+        android:hint="Date of Birth"
+        android:padding="15dp"
+        android:textColor="@color/white"
+        android:textColorHighlight="@color/white"
+        android:textColorHint="@color/white" />
+
+    <EditText
+        android:id="@+id/gender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="15dp"
+        android:background="@drawable/shapeemail"
+        android:drawableLeft="@drawable/ic_check_black_24dp"
+        android:drawablePadding="10dp"
+        android:hint="Gender"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textColorHighlight="@color/white"/>
