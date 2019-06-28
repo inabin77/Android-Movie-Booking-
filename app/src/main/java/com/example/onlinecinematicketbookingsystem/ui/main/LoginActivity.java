@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText email, password;
     Button login, regsiter;
 
-    public  String BASE_URL = "http://10.0.2.2:4000/";
+    public  String BASE_URL = "http://10.0.2.2:3001/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +55,9 @@ public class LoginActivity extends AppCompatActivity {
                             .addConverterFactory(GsonConverterFactory.create())
                             .build();
                     UserInterface userInterface = retrofit.create(UserInterface.class);
-                    final User user = new User(email.getText().toString().trim(), password.getText().toString().trim());
+                    final User user = new User();
+                    user.setEmail(email.getText().toString().trim());
+                    user.setPassword(password.getText().toString().trim());
                     Call<ResponseBody> call = userInterface.userLogin(user);
 
                     call.enqueue(new Callback<ResponseBody>() {

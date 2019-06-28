@@ -1,5 +1,6 @@
 package com.example.onlinecinematicketbookingsystem.ui.main;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -24,11 +25,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
-    EditText name, email, password, password2;
+    EditText name, email, password, phone, dob, gender;
     Button register1, login1;
 
-    public String BASE_URL = "http://10.0.2.2:4000/";
+    public String BASE_URL = "http://10.0.2.2:3001/";
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +39,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         name = findViewById(R.id.regfullname);
         email = findViewById(R.id.regemail);
         password = findViewById(R.id.regpassword);
-        password2 = findViewById(R.id.regconfirmpassword);
+        phone = findViewById(R.id.phone);
+        dob = findViewById(R.id.dob);
+        gender = findViewById(R.id.gender);
 
         register1 = findViewById(R.id.btnregister);
         register1.setOnClickListener(this);
@@ -69,8 +73,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
             UserInterface userInterface = retrofit.create(UserInterface.class);
-            final User user = new User(name.getText().toString().trim(), email.getText().toString().trim(), password.getText().toString().trim(), password2.getText().toString().trim());
-            Call<ResponseBody> call = userInterface.userRegistration(user);
+            final User user = new User();
+            user.setEmail(email.getText().toString().trim());
+            user.setPassword(password.getText().toString().trim());
+            user.setPhone(phone.getText().toString().trim());
+            user.setName(name.getText().toString().trim());
+            user.setDob(dob.getText().toString().trim());
+            user.setGender(gender.getText().toString().trim());
+
+            Call<ResponseBody> call = userInterface.userSignup(user);
 
             call.enqueue(new Callback<ResponseBody>() {
                 @Override
@@ -79,19 +90,21 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     Log.d("VAL", "success ");
 
                     if(response.isSuccessful()) {
-                        Toast.makeText(getApplicationContext(), "REGISTRATION SUCCESSFUL", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "SIGNUP SUCCESSFUL", Toast.LENGTH_SHORT).show();
 
                         Log.d("VAL", "success response ");
 
                         name.setText("");
                         email.setText("");
                         password.setText("");
-                        password2.setText("");
+                        phone.setText("");
+                        dob.setText("");
+                        gender.setText("");
                         startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                     }else {
                         try{
                             Log.d("VAL", response.toString());
-
+                    email.setText(response.errorBody().string());
                             Toast.makeText(getApplicationContext(), response.errorBody().string(), Toast.LENGTH_SHORT).show();
                         }catch (Exception e){
                             e.printStackTrace();
@@ -123,10 +136,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             password.setError("Required Field");
             return false;
         }
-        else if (TextUtils.isEmpty(password2.getText().toString())){
-            password2.setError("Required Field");
-            return false;
-        }
+//        else if (TextUtils.isEmpty(password2.getText().toString())){
+//            password2.setError("Required Field");
+//            return false;
+//        }
 
         return true;
     }
