@@ -1,13 +1,11 @@
-package com.example.onlinecinematicketbookingsystem.ui.main;
+package com.example.onlinecinematicketbookingsystem.ui.bnb.ui.main;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.example.onlinecinematicketbookingsystem.Interfaces.UserInterface;
-import com.example.onlinecinematicketbookingsystem.Models.User;
+import com.example.onlinecinematicketbookingsystem.ui.bnb.Interfaces.UserInterface;
+import com.example.onlinecinematicketbookingsystem.ui.bnb.Models.User;
 import com.example.onlinecinematicketbookingsystem.R;
-
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;

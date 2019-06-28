@@ -1,4 +1,4 @@
-package com.example.onlinecinematicketbookingsystem.ui.main;
+package com.example.onlinecinematicketbookingsystem.ui.bnb.ui.main;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,9 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.onlinecinematicketbookingsystem.Interfaces.UserInterface;
-import com.example.onlinecinematicketbookingsystem.Models.User;
 import com.example.onlinecinematicketbookingsystem.R;
+import com.example.onlinecinematicketbookingsystem.ui.bnb.Interfaces.UserInterface;
+import com.example.onlinecinematicketbookingsystem.ui.bnb.MainActivity;
+import com.example.onlinecinematicketbookingsystem.ui.bnb.Models.User;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -73,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                 email.setText("");
                                 password.setText("");
-                                startActivity(new Intent(LoginActivity.this, Dashboard.class));
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
 
                             }else {
                                 try{
