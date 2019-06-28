@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="20dp"
-    tools:context=".ui.main.LoginActivity">
+    tools:context=".ui.bnb.ui.main.LoginActivity">
 
     <ImageView
         android:layout_width="90dp"
