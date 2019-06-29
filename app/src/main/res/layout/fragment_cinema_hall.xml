@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".ui.bnb.Fragments.CinemaHallFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/tv_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#87cefa"
+        android:gravity="center"
+        android:text="AVAILABLE CINEMA HALLS"
+        android:textColor="#000"
+        android:textSize="25dp" />
+
+    <ImageView
+        android:layout_width="304dp"
+        android:layout_height="174dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginStart="50dp"
+        android:background="@drawable/bnb_icon" />
+
+    <Spinner
+        android:id="@+id/android_material_design_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Available Halls"
+        android:textColorHint="#05ab9a"
+        android:layout_gravity="center"
+        >
+
+    </Spinner>
+
+    <Button
+        android:id="@+id/reserve"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="500dp"
+        android:text="Reserve SEAT"
+        />
+</FrameLayout>

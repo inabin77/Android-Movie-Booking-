@@ -13,12 +13,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.bnb.MainActivity"></activity>
+        <!--<activity-->
+            <!--android:name=".ui.bnb.ui.main.NavigatorActivity"-->
+            <!--android:label="@string/title_activity_navigator"-->
+            <!--android:theme="@style/AppTheme.NoActionBar"></activity>-->
+        <!---->
+        <activity android:name=".ui.bnb.ui.main.NavigatorActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+
+
+        </activity>
+        <activity android:name=".ui.bnb.MainActivity" />
         <activity
             android:name=".ui.bnb.ui.main.RegisterActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ui.bnb.Dashboard"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.bnb.ui.main.LoginActivity"
