@@ -34,7 +34,7 @@
 
 
         <TextView
-            android:id="@+id/tv_name"
+            android:id="@+id/tv_moviename"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/iv_photo"
@@ -44,26 +44,27 @@
             android:textSize="25dp" />
 
         <TextView
-            android:id="@+id/tv_price"
+            android:id="@+id/tv_movieprice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_name"
+            android:layout_below="@id/tv_moviename"
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:textColor="#000"
             android:textSize="25dp" />
 
         <TextView
-            android:id="@+id/tv_description"
+            android:id="@+id/tv_moviedescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_price"
+            android:layout_below="@id/tv_movieprice"
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:textColor="#000"
             android:textSize="25dp" />
 
         <Button
+            android:id="@+id/bookseat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"

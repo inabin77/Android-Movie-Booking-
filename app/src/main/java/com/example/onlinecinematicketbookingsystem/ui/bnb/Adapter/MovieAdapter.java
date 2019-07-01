@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,7 +40,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
-        View movieView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.movie_detail,
+        View movieView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment_view_movie,
                 viewGroup, false);
 
         return new MovieViewHolder(movieView);
@@ -98,15 +99,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             super(itemView);
 
             image = itemView.findViewById(R.id.ivMovieImg);
-            name = itemView.findViewById(R.id.tvName);
-            desc = itemView.findViewById(R.id.tvDesc);
-            price = itemView.findViewById(R.id.tvPrice);
-            button = itemView.findViewById(R.id.btnSelectMovie);
-
-
+            name = itemView.findViewById(R.id.tv_moviename);
+            desc = itemView.findViewById(R.id.tv_moviedescription);
+            price = itemView.findViewById(R.id.tv_movieprice);
+            button = itemView.findViewById(R.id.bookseat);
         }
-
-
     }
+
 }
 

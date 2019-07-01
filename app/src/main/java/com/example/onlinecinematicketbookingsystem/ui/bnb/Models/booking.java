@@ -8,4 +8,16 @@ public class booking {
     private String showID;
     private Date bookingdate;
 
+    public String getUserID() {
+        return userID;
+    }
+
+    public String getShowID() {
+        return showID;
+    }
+
+    public Date getBookingdate() {
+        return bookingdate;
+    }
 }
+
