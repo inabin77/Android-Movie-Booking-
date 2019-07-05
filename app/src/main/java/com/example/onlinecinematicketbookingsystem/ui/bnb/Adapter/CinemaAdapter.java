@@ -40,7 +40,7 @@ public class CinemaAdapter extends RecyclerView.Adapter<CinemaAdapter.CinemaView
 
     public CinemaViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
-        View cinemaView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment_cinema_hall,
+        View cinemaView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment_cinemas,
                 viewGroup, false);
 
         return new CinemaViewHolder(cinemaView);
@@ -91,18 +91,18 @@ public class CinemaAdapter extends RecyclerView.Adapter<CinemaAdapter.CinemaView
     public class CinemaViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView image;
-        public TextView name,desc, price;
+        public TextView Name,Address,Phone;
         Button button;
 
 
         public CinemaViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            image = itemView.findViewById(R.id.ivMovieImg);
-            name = itemView.findViewById(R.id.tv_moviename);
-            desc = itemView.findViewById(R.id.tv_moviedescription);
-            price = itemView.findViewById(R.id.tv_movieprice);
-            button = itemView.findViewById(R.id.bookseat);
+            image = itemView.findViewById(R.id.ivCinemaImg);
+            Name = itemView.findViewById(R.id.tvCinemaName);
+            Address = itemView.findViewById(R.id.tvCinemaAddress);
+            Phone = itemView.findViewById(R.id.tvCinemaPhone);
+            //button = itemView.findViewById(R.id.bookseat);
         }
     }
 

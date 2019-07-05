@@ -24,9 +24,9 @@
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/btnSelectMovie"
+        android:id="@+id/btnSelectCinema"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Choose"/>
+        android:text="Back"/>
 
 </LinearLayout>

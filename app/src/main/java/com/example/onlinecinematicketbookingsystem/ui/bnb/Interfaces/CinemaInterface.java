@@ -6,6 +6,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface CinemaInterface {
-    @GET("api/v1/cinema")
+    @GET("api/v1/cinemas")
     Call<TestCinema> getALLcinemas();
 }

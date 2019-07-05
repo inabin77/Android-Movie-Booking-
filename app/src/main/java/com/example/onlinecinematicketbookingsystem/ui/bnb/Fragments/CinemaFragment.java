@@ -3,22 +3,17 @@ package com.example.onlinecinematicketbookingsystem.ui.bnb.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.onlinecinematicketbookingsystem.R;
-import com.example.onlinecinematicketbookingsystem.ui.bnb.Adapter.CinemaAdapter;
-import com.example.onlinecinematicketbookingsystem.ui.bnb.Adapter.MovieAdapter;
 import com.example.onlinecinematicketbookingsystem.ui.bnb.Interfaces.CinemaInterface;
-import com.example.onlinecinematicketbookingsystem.ui.bnb.Interfaces.MovieInterface;
 import com.example.onlinecinematicketbookingsystem.ui.bnb.Models.Cinema;
-import com.example.onlinecinematicketbookingsystem.ui.bnb.Models.Movie;
 import com.example.onlinecinematicketbookingsystem.ui.bnb.Models.TestCinema;
-import com.example.onlinecinematicketbookingsystem.ui.bnb.Models.TestMovie;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,19 +42,10 @@ public class CinemaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-//        List<Cinema> cinemas = new ArrayList<Cinema>();
-//        List<String> shows = new ArrayList<String>();
-//        movieList.add(new Movie("","a","b","c","","","","","","",cinemas,shows));
-//        movieList.add(new Movie("","e","f","g","","","","","","",cinemas,shows));
-//        movieList.add(new Movie("","a","b","c","","","","","","",cinemas,shows));
-
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_cinema_hall, container, false);
+        View view = inflater.inflate(R.layout.fragment_cinemas, container, false);
 
         recyclerView = view.findViewById(R.id.recyclerCinemas);
-//
-//        recyclerView.setAdapter(new MovieAdapter(movieList,getContext()));
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         loadcinema();
         return view;
@@ -82,11 +68,14 @@ public class CinemaFragment extends Fragment {
         listcall.enqueue(new Callback<TestCinema>() {
             @Override
             public void onResponse(Call<TestCinema> call, Response<TestCinema> response) {
-                //Toast.makeText(getContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), response.toString(), Toast.LENGTH_SHORT).show();
+
                 List<Cinema> list = response.body().getData();
-                recyclerView.setAdapter(new CinemaAdapter(list,getContext()));
-                recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                Log.d("data",list.get(0).getName());
+//                recyclerView.setAdapter(new CinemaAdapter(list,getContext()));
+//                recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             }
+
 
             @Override
             public void onFailure(Call<TestCinema> call, Throwable t) {

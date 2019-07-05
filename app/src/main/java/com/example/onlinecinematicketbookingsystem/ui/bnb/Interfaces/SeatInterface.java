@@ -8,6 +8,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface SeatInterface {
-    @GET("api/v1/seats")
+    @GET("api/v1/Seats")
     Call<List<Seats>> getALLseats();
 }
