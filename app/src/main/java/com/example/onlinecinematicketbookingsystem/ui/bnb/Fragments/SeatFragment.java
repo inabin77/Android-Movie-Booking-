@@ -30,7 +30,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class SeatFragment extends Fragment {
 
-    List<Movie> movieList = new ArrayList<Movie>();
+    List<Seats> seatsList = new ArrayList<Seats>();
     RecyclerView recyclerView;
     Retrofit retrofit;
 
@@ -54,10 +54,10 @@ public class SeatFragment extends Fragment {
 
 //        recyclerView = view.findViewById(R.id.recyclerMovies);
 //
-//        recyclerView.setAdapter(new MovieAdapter(movieList,getContext()));s
+//        recyclerView.setAdapter(new MovieAdapter(movieList,getContext()));
 //        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        //loadmovie();
+        loadSeats();
         return view;
 
     }

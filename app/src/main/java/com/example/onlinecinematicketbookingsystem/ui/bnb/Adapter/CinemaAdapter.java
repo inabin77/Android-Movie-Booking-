@@ -15,9 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.onlinecinematicketbookingsystem.R;
-import com.example.onlinecinematicketbookingsystem.ui.bnb.Fragments.ViewMovieFragment;
+import com.example.onlinecinematicketbookingsystem.ui.bnb.Fragments.MoviesFragment;
 import com.example.onlinecinematicketbookingsystem.ui.bnb.Models.Cinema;
-import com.example.onlinecinematicketbookingsystem.ui.bnb.Models.Movie;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -77,7 +76,7 @@ public class CinemaAdapter extends RecyclerView.Adapter<CinemaAdapter.CinemaView
         cinemaViewHolder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, ViewMovieFragment.class);
+                Intent intent = new Intent(context, MoviesFragment.class);
                 //intent.putExtra("id", cinema.getTheatreID());
                 context.startActivity(intent);
             }

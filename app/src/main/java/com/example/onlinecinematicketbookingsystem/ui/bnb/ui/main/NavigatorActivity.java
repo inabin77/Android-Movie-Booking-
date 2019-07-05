@@ -1,9 +1,6 @@
 package com.example.onlinecinematicketbookingsystem.ui.bnb.ui.main;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
@@ -15,7 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 
 import com.example.onlinecinematicketbookingsystem.R;
-import com.example.onlinecinematicketbookingsystem.ui.bnb.Fragments.CinemaHallFragment;
+import com.example.onlinecinematicketbookingsystem.ui.bnb.Fragments.CinemaFragment;
 import com.example.onlinecinematicketbookingsystem.ui.bnb.Fragments.MoviesFragment;
 import com.example.onlinecinematicketbookingsystem.ui.bnb.Fragments.SeatFragment;
 
@@ -80,7 +77,7 @@ public class NavigatorActivity extends AppCompatActivity
             getSupportFragmentManager().beginTransaction().replace(R.id.frameall,new MoviesFragment()).commit();
 
         } else if (id == R.id.nav_gallery) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.frameall,new CinemaHallFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameall,new CinemaFragment()).commit();
 
         } else if (id == R.id.nav_slideshow) {
             getSupportFragmentManager().beginTransaction().replace(R.id.frameall,new SeatFragment()).commit();

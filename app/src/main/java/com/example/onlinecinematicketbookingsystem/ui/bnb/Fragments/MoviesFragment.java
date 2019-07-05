@@ -13,8 +13,8 @@ import android.widget.Toast;
 import com.example.onlinecinematicketbookingsystem.R;
 import com.example.onlinecinematicketbookingsystem.ui.bnb.Adapter.MovieAdapter;
 import com.example.onlinecinematicketbookingsystem.ui.bnb.Interfaces.MovieInterface;
-import com.example.onlinecinematicketbookingsystem.ui.bnb.Models.Cinema;
 import com.example.onlinecinematicketbookingsystem.ui.bnb.Models.Movie;
+import com.example.onlinecinematicketbookingsystem.ui.bnb.Models.TestMovie;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,12 +52,12 @@ public class MoviesFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_movies, container, false);
 
-//        recyclerView = view.findViewById(R.id.recyclerMovies);
+        recyclerView = view.findViewById(R.id.recyclerMovies);
 //
 //        recyclerView.setAdapter(new MovieAdapter(movieList,getContext()));
 //        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        //loadmovie();
+        loadmovie();
         return view;
 
     }
@@ -73,16 +73,19 @@ public class MoviesFragment extends Fragment {
     {
         createInstance();
         MovieInterface movieInterface = retrofit.create(MovieInterface.class);
-        Call<List<Movie>> listcall=movieInterface.getALLmovies();
+        Call<TestMovie> listcall=movieInterface.getALLmovies();
 
-        listcall.enqueue(new Callback<List<Movie>>() {
+        listcall.enqueue(new Callback<TestMovie>() {
             @Override
-            public void onResponse(Call<List<Movie>> call, Response<List<Movie>> response) {
-                Toast.makeText(getContext(), response.toString(), Toast.LENGTH_SHORT).show();
+            public void onResponse(Call<TestMovie> call, Response<TestMovie> response) {
+                //Toast.makeText(getContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                List<Movie> list = response.body().getData();
+                recyclerView.setAdapter(new MovieAdapter(list,getContext()));
+                recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             }
 
             @Override
-            public void onFailure(Call<List<Movie>> call, Throwable t) {
+            public void onFailure(Call<TestMovie> call, Throwable t) {
                 Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

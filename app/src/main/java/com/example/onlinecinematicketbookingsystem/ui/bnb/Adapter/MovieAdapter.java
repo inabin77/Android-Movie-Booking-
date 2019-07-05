@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.onlinecinematicketbookingsystem.R;
-import com.example.onlinecinematicketbookingsystem.ui.bnb.Fragments.ViewMovieFragment;
+import com.example.onlinecinematicketbookingsystem.ui.bnb.Fragments.MoviesFragment;
 import com.example.onlinecinematicketbookingsystem.ui.bnb.Models.Movie;
 
 import java.io.IOException;
@@ -60,7 +59,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
         StrictMode();
 
-        final String path = BASE_URL+"uploads/"+movieList.get(i).getPoster_link();
+        final String path = BASE_URL +"public/"+ movieList.get(i).getPoster_link();
         System.out.println("Path: " +path);
 
         try {
@@ -76,7 +75,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         movieViewHolder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, ViewMovieFragment.class);
+                Intent intent = new Intent(context, MoviesFragment.class);
                 intent.putExtra("id", movie.getTheatreID());
                 context.startActivity(intent);
             }
