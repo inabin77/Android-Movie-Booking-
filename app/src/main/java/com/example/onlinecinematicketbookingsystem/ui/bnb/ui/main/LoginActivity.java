@@ -25,7 +25,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class LoginActivity extends AppCompatActivity {
 
     EditText email, password;
-    Button login, regsiter;
+    Button login, register;
 
     public  String BASE_URL = "http://10.0.2.2:3001/";
 
@@ -37,9 +37,9 @@ public class LoginActivity extends AppCompatActivity {
         email = findViewById(R.id.logemail);
         password = findViewById(R.id.logpassword);
         login = findViewById(R.id.btnlog);
-        regsiter = (Button) findViewById(R.id.btnreg);
+        register = (Button) findViewById(R.id.btnreg);
 
-        regsiter.setOnClickListener(new View.OnClickListener(){
+        register.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
@@ -74,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                 email.setText("");
                                 password.setText("");
-                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                startActivity(new Intent(LoginActivity.this, NavigatorActivity.class));
 
                             }else {
                                 try{
