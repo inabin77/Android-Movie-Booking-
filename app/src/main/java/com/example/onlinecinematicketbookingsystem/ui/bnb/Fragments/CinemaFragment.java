@@ -2,15 +2,17 @@ package com.example.onlinecinematicketbookingsystem.ui.bnb.Fragments;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.onlinecinematicketbookingsystem.R;
+import com.example.onlinecinematicketbookingsystem.ui.bnb.Adapter.CinemaAdapter;
 import com.example.onlinecinematicketbookingsystem.ui.bnb.Interfaces.CinemaInterface;
 import com.example.onlinecinematicketbookingsystem.ui.bnb.Models.Cinema;
 import com.example.onlinecinematicketbookingsystem.ui.bnb.Models.TestCinema;
@@ -68,12 +70,10 @@ public class CinemaFragment extends Fragment {
         listcall.enqueue(new Callback<TestCinema>() {
             @Override
             public void onResponse(Call<TestCinema> call, Response<TestCinema> response) {
-                Toast.makeText(getContext(), response.toString(), Toast.LENGTH_SHORT).show();
-
                 List<Cinema> list = response.body().getData();
-                Log.d("data",list.get(0).getName());
-//                recyclerView.setAdapter(new CinemaAdapter(list,getContext()));
-//                recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                //Log.d("data",list.get(0).getName());
+                recyclerView.setAdapter(new CinemaAdapter(list,getContext()));
+                recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             }
 
 
