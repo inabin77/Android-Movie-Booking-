@@ -1,21 +1,25 @@
 package com.example.onlinecinematicketbookingsystem.ui.bnb.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.StrictMode;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.onlinecinematicketbookingsystem.R;
-import com.example.onlinecinematicketbookingsystem.ui.bnb.Fragments.MoviesFragment;
+import com.example.onlinecinematicketbookingsystem.ui.bnb.Fragments.SeatFragment;
 import com.example.onlinecinematicketbookingsystem.ui.bnb.Models.Cinema;
 
 import java.io.IOException;
@@ -40,7 +44,7 @@ public class CinemaAdapter extends RecyclerView.Adapter<CinemaAdapter.CinemaView
 
     public CinemaViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
-        View cinemaView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment_cinemas,
+        View cinemaView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_cinema,
                 viewGroup, false);
 
         return new CinemaViewHolder(cinemaView);
@@ -54,15 +58,20 @@ public class CinemaAdapter extends RecyclerView.Adapter<CinemaAdapter.CinemaView
     public void onBindViewHolder(@NonNull CinemaAdapter.CinemaViewHolder cinemaViewHolder, int i) {
         final Cinema cinema = cinemaList.get(i);
 
-//        cinemaViewHolder.name.setText(cinema.getName());
-//        cinemaViewHolder.address.setText(cinema.getAddress());
-//        cinemaViewHolder.phone.setText(cinema.getPhone());
+        cinemaViewHolder.Name.setText(cinema.getName());
+        cinemaViewHolder.Address.setText(cinema.getAddress());
+        cinemaViewHolder.Phone.setText(cinema.getPhone());
 
-        StrictMode();
+        String[] shows = {"9:00 am","12:00 noon","3:00 pm","6:00 pm"};
+        ArrayAdapter adapter=new ArrayAdapter<String>(context, R.layout.list_showtime,shows);
+        cinemaViewHolder.Shows.setAdapter(adapter);
 
-        final String path = BASE_URL+"uploads/"+cinemaList.get(i).getPoster_link();
+        String poster = cinema.getPoster_link();
+        String name = poster.substring(poster.lastIndexOf("/") + 1);
+
+        final String path = BASE_URL+"public/"+ name;
         System.out.println("Path: " +path);
-
+        StrictMode();
         try {
             URL uri = new URL(path);
             bitmap = BitmapFactory.decodeStream((InputStream)uri.getContent());
@@ -73,14 +82,19 @@ public class CinemaAdapter extends RecyclerView.Adapter<CinemaAdapter.CinemaView
             e.printStackTrace();
         }
 
-        cinemaViewHolder.button.setOnClickListener(new View.OnClickListener() {
+        cinemaViewHolder.Shows.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, MoviesFragment.class);
-                //intent.putExtra("id", cinema.getTheatreID());
-                context.startActivity(intent);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String value = parent.getItemAtPosition(position).toString();
+                SeatFragment fragment = new SeatFragment();
+                FragmentManager fragmentManager = ((AppCompatActivity)context).getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.replace(R.id.frameall, fragment);
+                fragmentTransaction.commit();
             }
         });
+
     }
 
     @Override
@@ -92,17 +106,17 @@ public class CinemaAdapter extends RecyclerView.Adapter<CinemaAdapter.CinemaView
 
         public ImageView image;
         public TextView Name,Address,Phone;
-        Button button;
+        ListView Shows;
 
 
         public CinemaViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            image = itemView.findViewById(R.id.ivCinemaImg);
-            Name = itemView.findViewById(R.id.tvCinemaName);
-            Address = itemView.findViewById(R.id.tvCinemaAddress);
-            Phone = itemView.findViewById(R.id.tvCinemaPhone);
-            //button = itemView.findViewById(R.id.bookseat);
+            image = itemView.findViewById(R.id.iv_Cinemaphoto);
+            Name = itemView.findViewById(R.id.tv_Cinemaname);
+            Address = itemView.findViewById(R.id.tv_CinemaAddress);
+            Phone = itemView.findViewById(R.id.tv_Cinemaphone);
+            Shows = itemView.findViewById(R.id.showslist);
         }
     }
 

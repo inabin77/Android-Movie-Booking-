@@ -6,7 +6,7 @@ import android.os.Bundle;
 import com.example.onlinecinematicketbookingsystem.ui.bnb.Interfaces.UserInterface;
 import com.example.onlinecinematicketbookingsystem.ui.bnb.Models.User;
 import com.example.onlinecinematicketbookingsystem.R;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;

@@ -2,7 +2,7 @@ package com.example.onlinecinematicketbookingsystem.ui.bnb.ui.main;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.example.onlinecinematicketbookingsystem.R;
 import com.example.onlinecinematicketbookingsystem.ui.bnb.Interfaces.UserInterface;
-import com.example.onlinecinematicketbookingsystem.ui.bnb.MainActivity;
 import com.example.onlinecinematicketbookingsystem.ui.bnb.Models.User;
 
 import okhttp3.ResponseBody;

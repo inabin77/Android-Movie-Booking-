@@ -1,12 +1,14 @@
 package com.example.onlinecinematicketbookingsystem.ui.bnb.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.StrictMode;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +16,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.onlinecinematicketbookingsystem.R;
-import com.example.onlinecinematicketbookingsystem.ui.bnb.Fragments.MoviesFragment;
+import com.example.onlinecinematicketbookingsystem.ui.bnb.Fragments.CinemaFragment;
 import com.example.onlinecinematicketbookingsystem.ui.bnb.Models.Movie;
 
 import java.io.IOException;
@@ -39,7 +41,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
-        View movieView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment_view_movie,
+        View movieView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_movies,
                 viewGroup, false);
 
         return new MovieViewHolder(movieView);
@@ -53,15 +55,16 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     public void onBindViewHolder(@NonNull MovieAdapter.MovieViewHolder movieViewHolder, int i) {
         final Movie movie = movieList.get(i);
 
+        String poster = movie.getPoster_link();
+        String name = poster.substring(poster.lastIndexOf("/") + 1);
         movieViewHolder.name.setText(movie.getName());
         movieViewHolder.desc.setText(movie.getDescription());
         movieViewHolder.price.setText(movie.getPrice());
 
-        StrictMode();
-
-        final String path = BASE_URL +"public/"+ movieList.get(i).getPoster_link();
+        final String path = "http://10.0.2.2:3001/public/"+ name;
         System.out.println("Path: " +path);
 
+        StrictMode();
         try {
             URL uri = new URL(path);
             bitmap = BitmapFactory.decodeStream((InputStream)uri.getContent());
@@ -75,9 +78,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         movieViewHolder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, MoviesFragment.class);
-                intent.putExtra("id", movie.getTheatreID());
-                context.startActivity(intent);
+                CinemaFragment fragment = new CinemaFragment();
+                FragmentManager fragmentManager = ((AppCompatActivity)context).getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frameall, fragment);
+                fragmentTransaction.commit();
             }
         });
     }
@@ -97,11 +102,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         public MovieViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            image = itemView.findViewById(R.id.ivMovieImg);
+            image = itemView.findViewById(R.id.iv_movieimage);
             name = itemView.findViewById(R.id.tv_moviename);
             desc = itemView.findViewById(R.id.tv_moviedescription);
             price = itemView.findViewById(R.id.tv_movieprice);
-            button = itemView.findViewById(R.id.bookseat);
+            button = itemView.findViewById(R.id.viewCinemas);
         }
     }
 
