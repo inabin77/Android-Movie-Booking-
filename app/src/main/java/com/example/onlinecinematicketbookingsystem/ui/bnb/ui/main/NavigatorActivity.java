@@ -6,6 +6,7 @@ import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 
+import com.example.onlinecinematicketbookingsystem.ui.bnb.MainActivity;
 import com.example.onlinecinematicketbookingsystem.ui.bnb.MapsActivity;
 import com.google.android.material.navigation.NavigationView;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -97,8 +98,10 @@ public class NavigatorActivity extends AppCompatActivity
                     .commit();
 
         } else if (id == R.id.nav_contact) {
+            Intent intent = new Intent(NavigatorActivity.this, MainActivity.class);
+            startActivity(intent);
 
-        } else if (id == R.id.nav_setting) {
+        } else if (id == R.id.nav_location) {
           //  Toast.makeText(this, "gds", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(NavigatorActivity.this, MapsActivity.class);
            startActivity(intent);

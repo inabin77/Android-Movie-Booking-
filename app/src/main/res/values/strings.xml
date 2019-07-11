@@ -9,7 +9,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">BnB Movies</string>
-    <string name="nav_header_subtitle">nabin@gmail.com.com</string>
+    <string name="nav_header_subtitle">www.BnBmovies.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
@@ -17,7 +17,7 @@
     <string name="menu_halls">Cinema Halls</string>
     <string name="menu_seats">Seats</string>
     <string name="menu_contact">Contact</string>
-    <string name="menu_setting">Setting</string>
+    <string name="menu_location">Location</string>
     <string name="menu_logout">Logout</string>
 
     <!-- TODO: Remove or change this placeholder text -->

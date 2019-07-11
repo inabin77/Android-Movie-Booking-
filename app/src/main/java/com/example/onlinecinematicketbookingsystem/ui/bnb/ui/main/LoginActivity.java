@@ -1,8 +1,11 @@
 package com.example.onlinecinematicketbookingsystem.ui.bnb.ui.main;
 
 import android.content.Intent;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Vibrator;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +16,7 @@ import android.widget.Toast;
 import com.example.onlinecinematicketbookingsystem.R;
 import com.example.onlinecinematicketbookingsystem.ui.bnb.Interfaces.UserInterface;
 import com.example.onlinecinematicketbookingsystem.ui.bnb.Models.User;
+import com.squareup.seismic.ShakeDetector;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -21,10 +25,11 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements ShakeDetector.Listener {
 
     EditText email, password;
-    Button login, register;
+    Button login, register,vibrate;
+    Vibrator vibrator;
 
     public  String BASE_URL = "http://10.0.2.2:3001/";
 
@@ -33,8 +38,16 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+
+        ShakeDetector shakeDetector = new ShakeDetector(this);
+
+        shakeDetector.start(sensorManager);
+
+
         email = findViewById(R.id.logemail);
         password = findViewById(R.id.logpassword);
+        vibrate = findViewById(R.id.btnlog);
         login = findViewById(R.id.btnlog);
         register = (Button) findViewById(R.id.btnreg);
 
@@ -49,6 +62,13 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vibrator =(Vibrator) getSystemService(VIBRATOR_SERVICE);
+                vibrate.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        vibrator.vibrate(500);
+                    }
+                });
 
                 if (nullValidation()) {
                     Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
@@ -106,6 +126,12 @@ public class LoginActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public void hearShake() {
+        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+        startActivity(intent);
     }
 }
 

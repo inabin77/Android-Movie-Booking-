@@ -25,6 +25,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class SeatFragment extends Fragment {
 
     List<Seats> seatsList = new ArrayList<Seats>();
+    List<Seats> seatsList1 = new ArrayList<Seats>();
+    List<Seats> seatsList2 = new ArrayList<Seats>();
     RecyclerView recyclerView;
     Retrofit retrofit;
 
@@ -44,6 +46,8 @@ public class SeatFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerSeats);
 
         recyclerView.setAdapter(new SeatAdapter(seatsList,getContext()));
+        recyclerView.setAdapter(new SeatAdapter(seatsList1,getContext()));
+        recyclerView.setAdapter(new SeatAdapter(seatsList2,getContext()));
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),8));
 
         loadSeats();
@@ -80,14 +84,22 @@ public class SeatFragment extends Fragment {
         seatsList.add(new Seats("A2"));
         seatsList.add(new Seats("A3"));
         seatsList.add(new Seats("A4"));
-        seatsList.add(new Seats("A1"));
-        seatsList.add(new Seats("A2"));
-        seatsList.add(new Seats("A3"));
-        seatsList.add(new Seats("A4"));
-        seatsList.add(new Seats("A1"));
-        seatsList.add(new Seats("A2"));
-        seatsList.add(new Seats("A3"));
-        seatsList.add(new Seats("A4"));
+        seatsList.add(new Seats("B1"));
+        seatsList.add(new Seats("B2"));
+        seatsList.add(new Seats("B3"));
+        seatsList.add(new Seats("B4"));
+        seatsList1.add(new Seats("C1"));
+        seatsList1.add(new Seats("C2"));
+        seatsList1.add(new Seats("C3"));
+        seatsList1.add(new Seats("C4"));
+        seatsList2.add(new Seats("D1"));
+        seatsList2.add(new Seats("D2"));
+        seatsList2.add(new Seats("D3"));
+        seatsList2.add(new Seats("D4"));
+        seatsList2.add(new Seats("E1"));
+        seatsList2.add(new Seats("E2"));
+        seatsList2.add(new Seats("E3"));
+        seatsList2.add(new Seats("E4"));
     }
 
 }
