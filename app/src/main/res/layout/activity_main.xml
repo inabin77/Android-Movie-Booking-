@@ -7,4 +7,25 @@
     android:layout_height="match_parent"
     tools:context=".ui.bnb.MainActivity">
 
+    <FrameLayout
+        android:id="@+id/frameall"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bnb_details" >
+
+            <ImageView
+                android:layout_width="97dp"
+                android:layout_height="93dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="155dp"
+                android:layout_marginBottom="280dp"
+                android:background="@drawable/bnb_icon" />
+        </LinearLayout>
+
+    </FrameLayout>
+
 </LinearLayout>

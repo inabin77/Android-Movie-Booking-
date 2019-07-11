@@ -43,7 +43,7 @@ public class SeatAdapter extends RecyclerView.Adapter<SeatAdapter.SeatsViewHolde
         seatsViewHolder.Name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, seatsViewHolder.Name.getText() +"seat Booked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, seatsViewHolder.Name.getText() +"Seat Booked", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -97,6 +97,7 @@ public class SeatAdapter extends RecyclerView.Adapter<SeatAdapter.SeatsViewHolde
         public SeatsViewHolder(@NonNull View itemView) {
             super(itemView);
             Name = itemView.findViewById(R.id.tv_Seatsname);
+
         }
     }
 
