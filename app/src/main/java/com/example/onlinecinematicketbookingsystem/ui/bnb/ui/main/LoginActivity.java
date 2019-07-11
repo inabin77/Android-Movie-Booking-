@@ -1,9 +1,12 @@
 package com.example.onlinecinematicketbookingsystem.ui.bnb.ui.main;
 
+import android.app.Notification;
 import android.content.Intent;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.os.Vibrator;
 import android.text.TextUtils;
@@ -25,11 +28,14 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.example.onlinecinematicketbookingsystem.ui.bnb.NotifyApp.CHANNEL_1_ID;
+
 public class LoginActivity extends AppCompatActivity implements ShakeDetector.Listener {
 
     EditText email, password;
     Button login, register,vibrate;
     Vibrator vibrator;
+    private NotificationManagerCompat notificationManager;
 
     public  String BASE_URL = "http://10.0.2.2:3001/";
 
@@ -37,7 +43,7 @@ public class LoginActivity extends AppCompatActivity implements ShakeDetector.Li
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        notificationManager =NotificationManagerCompat.from(this);
         SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
         ShakeDetector shakeDetector = new ShakeDetector(this);
@@ -62,6 +68,7 @@ public class LoginActivity extends AppCompatActivity implements ShakeDetector.Li
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sendOnChannel1();
                 vibrator =(Vibrator) getSystemService(VIBRATOR_SERVICE);
                 vibrate.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -132,6 +139,18 @@ public class LoginActivity extends AppCompatActivity implements ShakeDetector.Li
     public void hearShake() {
         Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
         startActivity(intent);
+    }
+
+
+    public void sendOnChannel1(){
+        Notification notification = new NotificationCompat.Builder(this, CHANNEL_1_ID)
+                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setContentTitle("Users Login Successfully")
+                .setPriority(NotificationCompat.PRIORITY_LOW)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .build();
+
+        notificationManager.notify(1,notification);
     }
 }
 

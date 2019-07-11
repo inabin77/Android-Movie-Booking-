@@ -1,0 +1,45 @@
+package com.example.onlinecinematicketbookingsystem.ui.bnb;
+
+
+import android.app.Application;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+
+import androidx.annotation.RequiresApi;
+
+public class NotifyApp extends Application {
+    public static final String CHANNEL_1_ID="channel1";
+    public static final String  CHANNEL_2_ID="channel2";
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        createNotoficationChannels();
+    }
+
+
+    private void createNotoficationChannels() {
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationChannel channel1=new NotificationChannel(
+                    CHANNEL_1_ID,
+                    "Channel 1",
+                    NotificationManager.IMPORTANCE_LOW
+            );
+            channel1.setDescription("This is Channel 1");
+            NotificationChannel channel2=new NotificationChannel(
+                    CHANNEL_2_ID,
+                    "Channel 2",
+                    NotificationManager.IMPORTANCE_HIGH
+            );
+            channel2.setDescription("This is Channel 2");
+
+            NotificationManager manager =getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel1);
+            manager.createNotificationChannel(channel2);
+        }
+
+
+    }
+}
